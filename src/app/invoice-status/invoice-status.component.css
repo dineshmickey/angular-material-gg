@@ -1,0 +1,16 @@
+.status-paid {
+  background-color: rgb(145, 199, 145);
+}
+
+.status-draft {
+  background-color: rgb(206, 184, 145);
+}
+
+.status-submitted {
+  background-color: rgb(206, 206, 129);
+}
+
+.status {
+  border-radius: 20px;
+  width: 110px;
+}

@@ -1,0 +1,14 @@
+.type-ap {
+  background-color: green;
+}
+
+.type-ar {
+    background-color: orange;
+}
+
+.dot-type {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}

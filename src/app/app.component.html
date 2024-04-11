@@ -1,0 +1,122 @@
+<div>
+  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+</div>
+
+<mat-divider></mat-divider>
+
+<section>
+  @for (status of possibleStatus; track $index) {
+  <app-invoice-status state="{{ status }}">
+    {{ status | titlecase }}
+  </app-invoice-status>
+  }
+</section>
+
+<mat-divider></mat-divider>
+
+<mat-card>
+  <mat-card-header>
+    <h2>Recent Invoice</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Name Column -->
+      <ng-container matColumnDef="invoice_date">
+        <th mat-header-cell *matHeaderCellDef>Invoice Date #</th>
+        <td mat-cell *matCellDef="let element">{{ element.invoice_date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="supplier_name">
+        <th mat-header-cell *matHeaderCellDef>Supplier Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.supplier_name }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="invoice_number">
+        <th mat-header-cell *matHeaderCellDef>Invoice Number #</th>
+        <td mat-cell *matCellDef="let element">{{ element.invoice_number }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="transaction_type">
+        <th mat-header-cell *matHeaderCellDef>Transaction Type</th>
+        <td mat-cell *matCellDef="let element">
+          <app-transaction-type type="{{ element.transaction_type }}">
+            {{ element.transaction_type | titlecase }}
+          </app-transaction-type>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <app-invoice-status state="{{ element.status }}">
+            {{ element.status | titlecase }}
+          </app-invoice-status>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row" class="actions">
+          <button mat-icon-button class="iconbutton">
+            <mat-icon aria-label="View">visibility</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon aria-label="Duplicate">content_copy</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+
+<mat-card>
+  <mat-card-header>
+    <h3>Invoice</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="4">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Ex. Pizza">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Ex. Pizza">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Ex. Pizza">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Supplier Address</mat-label>
+          <input matInput>
+          <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
